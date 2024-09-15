@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create New Post</title>
+    <title>Delete Post</title>
 </head>
 <body>
-    <h1>Create a New Blog Post</h1>
+    <h1>Delete Post</h1>
+    <p>Are you sure you want to delete "{{ post.title }}"?</p>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Create Post</button>
+        <button type="submit">Yes, delete</button>
     </form>
+
+    <a href="{% url 'post_detail' post.id %}">Cancel</a> |
     <a href="{% url 'post_list' %}">Back to Blog Posts</a>
 </body>
 </html>
