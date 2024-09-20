@@ -1,1 +1,9 @@
-django
+Django
+djangorestframework
+markdown
+django-filter
+django-stubs[compatible-mypy]
+djangorestframework-stubs[compatible-mypy]
+mypy
+ruff
+python-dotenv

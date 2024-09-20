@@ -1,5 +1,4 @@
-exclude = ['scripts', '.venv', 'app/powerbi']
-#extend = './pyproject.toml'
+exclude = ['.venv', 'stubs', 'venv', 'migrations']
 indent-width = 4
 line-length = 80
 output-format = 'full'  # "full" | "concise" | "grouped" | "json" | "junit" | "github" | "gitlab" | "pylint" | "azure"
@@ -23,16 +22,25 @@ skip-magic-trailing-comma = true
 [lint]
 fixable = ['ALL']
 ignore = [
-    'E501',
-    'RUF001',
-    'RUF003',
-    'D',
-#    'D103',
-    'COM812',
-    'ISC001',
-    'DTZ',
+    'F401',    # imported but not used
+    'DOC',     # linting doc style
+    'ANN',     # type annotations
+    'PLC0415', # import not at top of the file
+    'TRY003',  # long messages in exceptions
+    'EM101',   # no string literal in exceptions
+    'PLR2004', # magic values in comparison
+
+    'E501',    # line too long
+    'RUF001',  # ambigios char
+    'RUF002',  # ambigios char in docs
+    'RUF003',  # ambigios char in comments
+    'D',       # documentation
+    'ERA001',  # commented out code
+    'COM812',  # missing trailing comma - FORMATTER CONFLICTS
+    'ISC001',  # implicit string concat
+    'DTZ',     # timezone
 ]
-logger-objects = ['mylogger.logger', 'assp_logger.logger']
+logger-objects = ['mylogger.logger',]
 preview = true
 select = [
     'F',      # pyflakes
@@ -171,7 +179,7 @@ ignore-names = ['_new']
 
 
 [lint.flake8-tidy-imports]
-ban-relative-imports = 'all'
+ban-relative-imports = 'parents'
 banned-module-level-imports = ['torch', 'tensorflow']
 
 

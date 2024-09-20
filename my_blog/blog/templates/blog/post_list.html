@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All posts</title>
+</head>
+<body>
+    <a href="{% url 'signup' %}">Sign Up</a>
+    <h1>Blog Posts</h1>
+    <a href="{% url 'post_create' %}">Write a New Post</a>
+    <ul>
+        {% for post in posts %}
+        <li><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

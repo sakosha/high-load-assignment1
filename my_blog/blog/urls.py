@@ -1,14 +1,19 @@
-from django.contrib.auth import views as auth_views
+from django.urls import include
 from django.urls import path
 
-from . import views
+from .views import index
+from .views import post_detail
+from .views import post_edit
+from .views import post_list
+from .views import post_new
+from .views import signup
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('posts', views.post_list, name='post_list'),
-    path('posts/<int:post_id>/', views.post_detail, name='post_detail'),
-    path('posts/create/', views.post_create, name='post_create'),
-    path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
-    path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('accounts/signup/', views.signup, name='signup'),
+    # path('', index, name='index'),
+    path('', post_list, name='post_list'),
+    path('post/new/', post_new, name='post_create'),
+    path('post/<int:pk>/', post_detail, name='post_detail'),
+    path('post/<int:pk>/edit/', post_edit, name='post_edit'),
+    path('signup/', signup, name='signup'),
+    path('', include('django.contrib.auth.urls')),
 ]
